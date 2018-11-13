@@ -1,4 +1,4 @@
 class ArtworkSerializer < ActiveModel::Serializer
-  attributes :id, :title, :primary_image, :name, :display_bio, :ishighlight
+  attributes :id, :api_id, :image_url, :department_id
   has_one :department
 end

@@ -4,7 +4,7 @@ window.addEventListener('DOMContentLoaded', function(){
     const tourButton = document.querySelector('button')
     const paintingDiv = document.getElementById('painting')
     const url = "https://collectionapi.metmuseum.org/public/collection/v1/objects"
-
+    debugger
     // How does the frontend get the data from the BACKEND
     tourButton.addEventListener("click", function(e){
         randInt = Math.floor(Math.random() * Math.floor(472721))

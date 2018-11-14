@@ -2,8 +2,9 @@ window.addEventListener('DOMContentLoaded', function(){
     const paintingsArray = [];
     const departmentsArray = [];
 
-    const randButton = document.querySelector('button')
+    const randButton = document.getElementById('random')
     const paintingDiv = document.getElementById('painting')
+    const euroButton = document.getElementById('european paintings')
 
     const metUrl = "https://collectionapi.metmuseum.org/public/collection/v1/objects"
     const artworksUrl = "http://localhost:3000/artworks"
@@ -17,6 +18,14 @@ window.addEventListener('DOMContentLoaded', function(){
 
     randButton.addEventListener("click", function(e){
         randomPainting()
+    })
+
+    euroButton.addEventListener("click", function(e){
+        id = event.target.id
+        let tourLocation = departmentsArray.find(object => {
+            return object.name.toLowerCase() === id
+        })
+        tour(tourLocation)
     })
 
     function randomPainting(){
@@ -53,4 +62,17 @@ window.addEventListener('DOMContentLoaded', function(){
             })
         })
     }
-})
+
+    function tour(department){
+       const tourPaintings = paintingsArray.filter(painting => {
+           return painting.department_id === department.id
+       })
+       i = 0
+
+       paintingDiv.innerHTML = `
+        <img src="${tourPaintings[i].image_url}"></img>
+        <p>${tourPaintings[i].department.name}</p>
+        <button>Next</button>`
+       }
+   }
+)

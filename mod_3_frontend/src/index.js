@@ -1,6 +1,8 @@
 window.addEventListener('DOMContentLoaded', function(){
     const paintingsArray = [];
     const departmentsArray = [];
+    let paintingIndex = 0;
+    let tourLocation;
 
     const randButton = document.getElementById('random')
     const paintingDiv = document.getElementById('painting')
@@ -12,9 +14,6 @@ window.addEventListener('DOMContentLoaded', function(){
 
     getPaintings()
     getDepartments()
-    
-    console.log(paintingsArray)
-    console.log(departmentsArray)
 
     randButton.addEventListener("click", function(e){
         randomPainting()
@@ -22,10 +21,20 @@ window.addEventListener('DOMContentLoaded', function(){
 
     euroButton.addEventListener("click", function(e){
         id = event.target.id
-        let tourLocation = departmentsArray.find(object => {
+        tourLocation = departmentsArray.find(object => {
             return object.name.toLowerCase() === id
         })
-        tour(tourLocation)
+        tour(tourLocation, paintingIndex)
+    })
+
+    window.addEventListener("click", function(e){
+        if (e.target.innerText === "Next"){
+            paintingIndex++
+            tour(tourLocation, paintingIndex)
+        } else if (e.target.innerText === "Previous"){
+            paintingIndex--
+            tour(tourLocation, paintingIndex)
+        }
     })
 
     function randomPainting(){
@@ -39,7 +48,7 @@ window.addEventListener('DOMContentLoaded', function(){
             <p>${json.artistDisplayName}</p>
             <p>${json.department}</p>
             <a target="_blank" href="${json.objectURL}">See More</a>
-            <button>Next</button>`
+            <button>New Painting</button>`
             })
         }
 
@@ -63,16 +72,37 @@ window.addEventListener('DOMContentLoaded', function(){
         })
     }
 
-    function tour(department){
+    function tour(department, paintingIndex){
        const tourPaintings = paintingsArray.filter(painting => {
            return painting.department_id === department.id
        })
-       i = 0
 
-       paintingDiv.innerHTML = `
-        <img src="${tourPaintings[i].image_url}"></img>
-        <p>${tourPaintings[i].department.name}</p>
-        <button>Next</button>`
+       if (tourPaintings.length < paintingIndex){
+           paintingIndex === 0
+       } else if (paintingIndex < 0){
+           paintingIndex = (tourPaintings.length - 1)
        }
+       
+       paintingApiCall(tourPaintings[paintingIndex].api_id)
+       .then(function(json) {
+           renderPainting(tourPaintings[paintingIndex], json)
+       })
+    }
+
+   function paintingApiCall(paintingId){
+    return fetch(`${metUrl}/${paintingId}`)
+       .then(res => res.json())
    }
-)
+
+   function renderPainting(painting, json){
+        paintingDiv.innerHTML = `
+        <img src="${painting.image_url}"></img>
+        <p>${json.title}</p>
+        <p>${painting.department.name}</p>
+        <p>${json.artistDisplayName}</p>
+        <a target="_blank" href="${json.objectURL}">See More</a>
+        <button>Previous</button>
+        <button>Next</button>`
+   }
+   
+})

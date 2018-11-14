@@ -5,9 +5,7 @@ window.addEventListener('DOMContentLoaded', function(){
     let tourLocation;
 
     const container = document.getElementById('container')
-    const containerHome = Array.from(container.children)
     const navbar = document.querySelector('nav')
-    const navDropdown = document.getElementById('nav-dropdown')
 
     const metUrl = "https://collectionapi.metmuseum.org/public/collection/v1/objects"
     const artworksUrl = "http://localhost:3000/artworks"
@@ -30,6 +28,11 @@ window.addEventListener('DOMContentLoaded', function(){
     window.addEventListener("click", function(e){
         if (e.target.innerText === "Next" || e.target.innerText === "Previous"){
             indexHandler(e)
+        } else if (e.target.id === "artwork"){
+            e.target.id = "modal"
+            e.target.style.display = "block";
+        } else if (e.target.id === "modal"){
+            e.target.id = "artwork"
         }
     })
 
@@ -45,7 +48,7 @@ window.addEventListener('DOMContentLoaded', function(){
     function navbarHandler(e){
         if (e.target.parentElement.id === "nav-dropdown"){
             getTourInfo(e)
-        } else if (e.target.innerText === "Home") {
+        } else if (e.target.id === "met-logo") {
             resetContainer()
         }
     }
@@ -84,7 +87,8 @@ window.addEventListener('DOMContentLoaded', function(){
        })
 
        paintingIndex = indexChecker(paintingIndex, tourPaintings)
-       
+       console.log(paintingIndex)
+
        paintingApiCall(tourPaintings[paintingIndex].api_id)
        .then(function(json) {
            renderPainting(tourPaintings[paintingIndex], json)
@@ -97,7 +101,8 @@ window.addEventListener('DOMContentLoaded', function(){
    }
 
    function indexChecker(paintingIndex, tourPaintings){
-    if (tourPaintings.length < paintingIndex){
+    if (tourPaintings.length <= paintingIndex){
+        paintingIndex = 0
         return 0
     } else if (paintingIndex < 0){
         return (tourPaintings.length - 1)
@@ -108,7 +113,7 @@ window.addEventListener('DOMContentLoaded', function(){
 
    function renderPainting(painting, json){
         container.innerHTML = `
-        <img src="${painting.image_url}"></img>
+        <img src="${painting.image_url}" id="artwork"></img>
         <p>${json.title}</p>
         <p>${painting.department.name}</p>
         <p>${json.artistDisplayName}</p>

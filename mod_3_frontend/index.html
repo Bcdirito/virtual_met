@@ -61,9 +61,9 @@
       </nav>
     <div class="container" id="container">
           <h1 class="the-met">The MET</h1>
-         <div class="w3-dropdown-hover" id="tour">
+         <div class="w3-dropdown-hover">
           <button class="button is-light the-met-start">Start Tour</button>
-          <div class="w3-dropdown-content w3-bar-block w3-card-4 dropdown">
+          <div class="w3-dropdown-content w3-bar-block w3-card-4 dropdown" id="tour">
             <a class="w3-bar-item w3-button">European Paintings</a>
             <a class="w3-bar-item w3-button">Medieval Art</a>
             <a class="w3-bar-item w3-button">Modern and Contemporary Art</a>
@@ -74,8 +74,8 @@
         </div>
     </div>
       <script src="src/index.js"></script>
-      <audio preload="auto" autoplay loop>
-        <source src="music/rhapsody_in_blue.m4a">
+      <audio preload="auto" autoplay="true" loop="true">
+        <source src="music/rhapsody_in_blue.m4a" type="audio/mp3">
       </audio>
 
 </body>

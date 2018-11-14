@@ -4,9 +4,9 @@ window.addEventListener('DOMContentLoaded', function(){
     let paintingIndex = 0;
     let tourLocation;
 
-    const paintingDiv = document.getElementById('painting')
-    const euroButton = document.getElementById('european paintings')
-    const modernButton = document.getElementById('modern and contemporary art')
+    const container = document.getElementById('container')
+    const tourButton = document.getElementById("tour")
+    const navDropdown = document.getElementById('nav-dropdown')
 
     const metUrl = "https://collectionapi.metmuseum.org/public/collection/v1/objects"
     const artworksUrl = "http://localhost:3000/artworks"
@@ -15,21 +15,25 @@ window.addEventListener('DOMContentLoaded', function(){
     getPaintings()
     getDepartments()
 
-    modernButton.addEventListener("click", function(e){
-        id = event.target.id
+    // console.log(paintingsArray)
+    // console.log(departmentsArray)
+
+    tourButton.addEventListener("click", function(e){
+        name = e.target.innerText
         tourLocation = departmentsArray.find(object => {
-            return object.name.toLowerCase() === id
+            return object.name === name
         })
         tour(tourLocation, paintingIndex)
     })
 
-    euroButton.addEventListener("click", function(e){
-        id = event.target.id
+    navDropdown.addEventListener("click", function(e){
+        name = e.target.innerText
         tourLocation = departmentsArray.find(object => {
-            return object.name.toLowerCase() === id
+            return object.name === name
         })
         tour(tourLocation, paintingIndex)
     })
+
 
     window.addEventListener("click", function(e){
         if (e.target.innerText === "Next" || e.target.innerText === "Previous"){
@@ -95,7 +99,7 @@ window.addEventListener('DOMContentLoaded', function(){
    }
 
    function renderPainting(painting, json){
-        paintingDiv.innerHTML = `
+        container.innerHTML = `
         <img src="${painting.image_url}"></img>
         <p>${json.title}</p>
         <p>${painting.department.name}</p>

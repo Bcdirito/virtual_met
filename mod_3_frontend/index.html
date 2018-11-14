@@ -2,12 +2,78 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Virtual Met</title>
+  <title>MET</title>
+  <link rel="stylesheet" href="bulma.css"></link>
+  <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body>
 </head>
 <body>
-    <button>Random Painting</button>
-    <div id="painting"></div>
-    <script src="src/index.js">
+    <nav class="navbar navbar-custom" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+          <a class="navbar-item">
+            <img src="img/Met_logo.png" width="30" height="28">
+          </a>
+      
+          <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+      
+        <div id="navbarBasicExample" class="navbar-menu">
+          <div class="navbar-start">
+            <a class="navbar-item">
+              Home
+            </a>
+      
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link">
+                More
+              </a>
+      
+              <div class="navbar-dropdown">
+                <a class="navbar-item">
+                    European Paintings
+                </a>
+                <a class="navbar-item">
+                    Medieval Art
+                </a>
+                <a class="navbar-item">
+                    Modern and Contemporary Art
+                </a>
+                <a class="navbar-item">
+                    The American Wing
+                </a>
+                <a class="navbar-item">
+                    Asian Art
+                </a>
+                <a class="navbar-item">
+                    Greek and Roman Art
+                </a>
+              </div>
+            </div>
+          </div>
+      
+        
+      </nav>
+    <div class="container">
+          <h1 class="the-met">The MET</h1>
+      <!-- <div id="painting"></div> -->
+      <div class="w3-dropdown-hover">
+          <button class="button is-light the-met-start">Start Tour</button>
+          <div class="w3-dropdown-content w3-bar-block w3-card-4 dropdown">
+            <a href="#" class="w3-bar-item w3-button">European Paintings</a>
+            <a href="#" class="w3-bar-item w3-button">Medieval Art</a>
+            <a href="#" class="w3-bar-item w3-button">Modern and Contemporary Art</a>
+            <a href="#" class="w3-bar-item w3-button">The American Wing</a>
+            <a href="#" class="w3-bar-item w3-button">Asian Art</a>
+            <a href="#" class="w3-bar-item w3-button">Greek and Roman Art</a>
+          </div>
+        </div>
+    </div>
+      <script src="src/index.js">
     </script>
 </body>
 </html>

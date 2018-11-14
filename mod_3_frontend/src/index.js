@@ -5,6 +5,7 @@ window.addEventListener('DOMContentLoaded', function(){
     let tourLocation;
 
     const container = document.getElementById('container')
+    const containerHome = Array.from(container.children)
     const tourButton = document.getElementById("tour")
     const navbar = document.querySelector('nav')
     const navDropdown = document.getElementById('nav-dropdown')
@@ -18,34 +19,14 @@ window.addEventListener('DOMContentLoaded', function(){
 
     navbar.addEventListener("click", function(e){
         if (e.target.parentElement.id === "nav-dropdown"){
-            name = e.target.innerText
-            tourLocation = departmentsArray.find(object => {
-                return object.name === name
-            })
-            tour(tourLocation, paintingIndex)
+            getTourInfo(e)
         } else if (e.target.innerText === "Home") {
-            container.innerHTML = `<h1 class="the-met">The MET</h1>
-            <div class="w3-dropdown-hover" id="tour">
-             <button class="button is-light the-met-start">Start Tour</button>
-             <div class="w3-dropdown-content w3-bar-block w3-card-4 dropdown">
-               <a class="w3-bar-item w3-button">European Paintings</a>
-               <a class="w3-bar-item w3-button">Medieval Art</a>
-               <a class="w3-bar-item w3-button">Modern and Contemporary Art</a>
-               <a class="w3-bar-item w3-button">The American Wing</a>
-               <a class="w3-bar-item w3-button">Asian Art</a>
-               <a class="w3-bar-item w3-button">Greek and Roman Art</a>
-             </div>
-           </div>
-       </div>`
+            resetContainer()
         }
     })
 
     tourButton.addEventListener("click", function(e){
-        name = e.target.innerText
-        tourLocation = departmentsArray.find(object => {
-            return object.name === name
-        })
-        tour(tourLocation, paintingIndex)
+        getTourInfo(e)
     })
 
 
@@ -61,6 +42,14 @@ window.addEventListener('DOMContentLoaded', function(){
         } else if (e.target.innerText === "Previous"){
             paintingIndex--
         }
+        tour(tourLocation, paintingIndex)
+    }
+
+    function getTourInfo(e){
+        name = e.target.innerText
+        tourLocation = departmentsArray.find(object => {
+            return object.name === name
+        })
         tour(tourLocation, paintingIndex)
     }
 
@@ -121,6 +110,22 @@ window.addEventListener('DOMContentLoaded', function(){
         <a target="_blank" href="${json.objectURL}">See More</a></br>
         <button>Previous</button>
         <button>Next</button>`
+   }
+
+   function resetContainer(){
+        container.innerHTML = `<h1 class="the-met">The MET</h1>
+        <div class="w3-dropdown-hover" id="tour">
+            <button class="button is-light the-met-start">Start Tour</button>
+            <div class="w3-dropdown-content w3-bar-block w3-card-4 dropdown">
+            <a class="w3-bar-item w3-button">European Paintings</a>
+            <a class="w3-bar-item w3-button">Medieval Art</a>
+            <a class="w3-bar-item w3-button">Modern and Contemporary Art</a>
+            <a class="w3-bar-item w3-button">The American Wing</a>
+            <a class="w3-bar-item w3-button">Asian Art</a>
+            <a class="w3-bar-item w3-button">Greek and Roman Art</a>
+            </div>
+        </div>
+    </div>`
    }
    
 })

@@ -3,12 +3,15 @@
 body {
   background-image: url(img/picture_6.jpeg);
   height: 100vh;
-  background-size: cover;
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+    background-color: #000000;
 }
 
 #artwork {
-  height: 300px;
-  width: 50%
+  width: 409px;
+  height: 285px;
+  border: 2px solid black;
 }
 
 #modal {
@@ -36,11 +39,13 @@ body {
 .container {
   /* right: 20%; */
   top: 25%;
-  left: 18%;
+  margin-left: 25%;
+  width: 52%;
 }
 
 .the-met {
   font-family: 'Abril Fatface', cursive;
+  /* font-family:  */
   color: black;
   font-size: 50px;
   top: 40%;
@@ -48,6 +53,7 @@ body {
 
 .the-met-start {
   font-family: 'Abril Fatface', cursive;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .dropdown {
@@ -55,9 +61,35 @@ body {
   font-size: 10px;
 }
 
-/* .navbar-custom {
-  background-color: blue;
-} */
+.artwork_display {
+  display: flex;
+  justify-content: center;
+}
+
+.next-button {
+  background-color: transparent;
+  border: transparent;
+  outline: none;
+  font-size: 2rem;
+  opacity: 0.6;
+}
+
+.previous-button {
+  background-color: transparent;
+  border: transparent;
+  outline: none;
+  font-size: 2rem;
+  opacity: 0.6;
+}
+
+.start-screen{
+  margin-left: 40%;
+}
+
+.start-tour {
+  margin-left: 10%;
+}
+
 
 @-webkit-keyframes spinAround {
   from {

@@ -39,7 +39,7 @@ Artwork.create(api_id: 488570, image_url: "https://c1.staticflickr.com/5/4384/23
 Artwork.create(api_id: 488978, image_url: "https://www.jackson-pollock.org/images/paintings/autumn-rhythm.jpg", department_id: Department.third.id)
 Artwork.create(api_id: 490036, image_url: "http://res.cloudinary.com/culturemap-com/image/upload/q_auto/ar_4:3,c_fill,g_faces:center,w_1200/v1536344618/photos/281239_original.jpg", department_id: Department.third.id)
 Artwork.create(api_id: 482133, image_url: "http://lichtensteinpaintings.com/Stepping%20Out%20Roy%20Lichtenstein.jpg", department_id: Department.third.id)
-Artwork.create(api_id: 488319, image_url: "http://canvasprintshere.com/uploadpic/wassily_kandinsky/big/improvisation_no_27_the_garden_of_love_c_1912.jpg", department_id: Department.third.id)
+Artwork.create(api_id: 488319, image_url: "https://www.learner.org/courses/globalart/assets/non_flash_796/work_231.jpg", department_id: Department.third.id)
 Artwork.create(api_id: 486270, image_url: "https://c1.staticflickr.com/5/4132/5159428806_b935d56eee.jpg", department_id: Department.third.id)
 Artwork.create(api_id: 488694, image_url: "https://www.georgiaokeeffe.net/images/paintings/cows-skull-red-white-and-blue.jpg", department_id: Department.third.id)
 Artwork.create(api_id: 486162, image_url: "https://upload.wikimedia.org/wikipedia/en/8/8d/Pablo_Picasso%2C_1905%2C_Au_Lapin_Agile_%28At_the_Lapin_Agile%29%2C_oil_on_canvas%2C_99.1_x_100.3_cm%2C_Metropolitan_Museum_of_Art.jpg", department_id: Department.third.id)

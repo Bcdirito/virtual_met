@@ -6,6 +6,7 @@ window.addEventListener('DOMContentLoaded', function(){
 
     const container = document.getElementById('container')
     const navbar = document.querySelector('nav')
+    const audio = document.querySelector('audio')
 
     const metUrl = "https://collectionapi.metmuseum.org/public/collection/v1/objects"
     const artworksUrl = "http://localhost:3000/artworks"
@@ -50,6 +51,10 @@ window.addEventListener('DOMContentLoaded', function(){
             getTourInfo(e)
         } else if (e.target.id === "met-logo") {
             resetContainer()
+        } else if (e.target.id === "play"){
+            audio.play()
+        } else if (e.target.id === "pause"){
+            audio.pause()
         }
     }
 

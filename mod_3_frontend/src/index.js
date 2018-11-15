@@ -8,6 +8,7 @@ window.addEventListener('DOMContentLoaded', function(){
 
     const container = document.getElementById('container')
     const navbar = document.querySelector('nav')
+    const navend = document.querySelector('.nav-right')
 
     const metUrl = "https://collectionapi.metmuseum.org/public/collection/v1/objects"
     const artworksUrl = "http://localhost:3000/artworks"
@@ -82,17 +83,17 @@ window.addEventListener('DOMContentLoaded', function(){
     }
 
     function getAudio(){
-        if (container.children.length === 2 || container.children[2].innerText === "Modern and Contemporary Art"){
+        if (navend.innerText === "" || navend.innerText === "Modern and Contemporary Art"){
             return document.getElementById('rhapsody')
-        } if (container.children[2].innerText === "European Paintings"){
+        } if (navend.innerText === "European Paintings"){
             return document.getElementById('european')
-        } else if (container.children[2].innerText === "Medieval Art"){
+        } else if (navend.innerText === "Medieval Art"){
             return document.getElementById('medieval')
-        } else if (container.children[2].innerText === "The American Wing"){
+        } else if (navend.innerText === "The American Wing"){
             return document.getElementById('american')
-        } else if (container.children[2].innerText === "Asian Art"){
+        } else if (navend.innerText === "Asian Art"){
             return document.getElementById('asian')
-        } else if (container.children[2].innerText === "Greek and Roman Art"){
+        } else if (navend.innerText === "Greek and Roman Art"){
             return document.getElementById('greek')
         }
     }
@@ -128,6 +129,7 @@ window.addEventListener('DOMContentLoaded', function(){
     }
 
     function tour(department, paintingIndex){
+        navend.innerText = `${department.name}`
        const tourPaintings = paintingsArray.filter(painting => {
            return painting.department_id === department.id
        })
@@ -187,6 +189,7 @@ window.addEventListener('DOMContentLoaded', function(){
    }
 
    function resetContainer(){
+       navend.innerText = ""
         container.innerHTML = `<div class="start-screen"><h1 class="the-met">The MET</h1>
         <div class="w3-dropdown-hover">
          <button class="button is-light the-met-start">Start Tour</button>

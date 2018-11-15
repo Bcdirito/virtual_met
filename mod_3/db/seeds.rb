@@ -34,7 +34,7 @@ Artwork.create(api_id: 470298, image_url: "https://images.metmuseum.org/CRDImage
 Artwork.create(api_id: 467594, image_url: "https://images.metmuseum.org/CRDImages/md/original/DP144070.jpg", department_id: Department.second.id)
 Artwork.create(api_id: 464483, image_url: "https://images.metmuseum.org/CRDImages/md/original/DT128.jpg", department_id: Department.second.id)
 Artwork.create(api_id: 464333, image_url: "https://images.metmuseum.org/CRDImages/md/original/DP134383.jpg", department_id: Department.second.id)
-Artwork.create(api_id: 488486, image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Portrait_of_a_German_Officer%2C_Marsden_Hartley.jpg/300px-Portrait_of_a_German_Officer%2C_Marsden_Hartley.jpg", department_id: Department.third.id)
+Artwork.create(api_id: 491924, image_url: "http://s3.amazonaws.com/jo.www.bucket/collisart.com/nodes/images/76/default/Oxbow_1000.jpg?1398974446", department_id: Department.third.id)
 Artwork.create(api_id: 488570, image_url: "https://c1.staticflickr.com/5/4384/23572933648_e31cf9ccfa_b.jpg", department_id: Department.third.id)
 Artwork.create(api_id: 488978, image_url: "https://www.jackson-pollock.org/images/paintings/autumn-rhythm.jpg", department_id: Department.third.id)
 Artwork.create(api_id: 490036, image_url: "http://res.cloudinary.com/culturemap-com/image/upload/q_auto/ar_4:3,c_fill,g_faces:center,w_1200/v1536344618/photos/281239_original.jpg", department_id: Department.third.id)

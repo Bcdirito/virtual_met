@@ -87,8 +87,9 @@ window.addEventListener('DOMContentLoaded', function(){
        })
 
        paintingIndex = indexChecker(paintingIndex, tourPaintings)
-       console.log(paintingIndex)
-
+    //    console.log(paintingIndex)
+    //    console.log(tourPaintings[paintingIndex].api_id)
+    
        paintingApiCall(tourPaintings[paintingIndex].api_id)
        .then(function(json) {
            renderPainting(tourPaintings[paintingIndex], json)
@@ -100,14 +101,14 @@ window.addEventListener('DOMContentLoaded', function(){
        .then(res => res.json())
    }
 
-   function indexChecker(paintingIndex, tourPaintings){
-    if (tourPaintings.length <= paintingIndex){
+   function indexChecker(index, tourPaintings){
+    if (tourPaintings.length <= index){
         paintingIndex = 0
-        return 0
-    } else if (paintingIndex < 0){
+        return paintingIndex
+    } else if (index < 0){
         return (tourPaintings.length - 1)
     } else {
-        return paintingIndex
+        return index
     }
    }
 

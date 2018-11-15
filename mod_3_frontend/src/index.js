@@ -1,8 +1,10 @@
 window.addEventListener('DOMContentLoaded', function(){
     const paintingsArray = [];
     const departmentsArray = [];
+    
     let paintingIndex = 0;
     let tourLocation;
+    let audio;
 
     const container = document.getElementById('container')
     const navbar = document.querySelector('nav')
@@ -20,7 +22,7 @@ window.addEventListener('DOMContentLoaded', function(){
 
     container.addEventListener("click", function(e){
         if(e.target.parentElement.id === "tour"){
-            getTourInfo(e)
+            getTourInfo(e, audio)
         } 
     })
 
@@ -57,13 +59,47 @@ window.addEventListener('DOMContentLoaded', function(){
 
     function navbarHandler(e){
         if (e.target.parentElement.id === "nav-dropdown"){
-            getTourInfo(e)
+            getTourInfo(e, audio)
         } else if (e.target.id === "met-logo") {
             resetContainer()
+        } else if (e.target.id === "play"){
+            playMusic()
+        } else if (e.target.id === "pause"){
+            pauseMusic(audio)
         }
     }
 
-    function getTourInfo(e){
+    function playMusic(){
+        audio = getAudio()
+        audio.currentTime = 0
+        audio.play()
+    }
+
+    function pauseMusic(audio){
+        if (audio !== undefined){
+            audio.pause()
+        }
+    }
+
+    function getAudio(){
+        if (container.children.length === 2 || container.children[2].innerText === "Modern and Contemporary Art"){
+            return document.getElementById('rhapsody')
+        } if (container.children[2].innerText === "European Paintings"){
+            return document.getElementById('european')
+        } else if (container.children[2].innerText === "Medieval Art"){
+            return document.getElementById('medieval')
+        } else if (container.children[2].innerText === "The American Wing"){
+            return document.getElementById('american')
+        } else if (container.children[2].innerText === "Asian Art"){
+            return document.getElementById('asian')
+        } else if (container.children[2].innerText === "Greek and Roman Art"){
+            return document.getElementById('greek')
+        }
+    }
+
+    function getTourInfo(e, audio){
+        pauseMusic(audio)
+        paintingIndex = 0
         name = e.target.innerText
         tourLocation = departmentsArray.find(object => {
             return object.name === name

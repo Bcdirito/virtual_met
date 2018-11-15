@@ -52,9 +52,9 @@
                 </a>
               </div>
             </div>
+            <a class="navbar-item" id="play">Play</a>
+            <a class="navbar-item" id="pause">Pause</a>
           </div>
-      
-        
       </nav>
     <div class="container" id="container">
         <div class="start-screen">
@@ -72,8 +72,15 @@
         </div>
     </div>
     </div>
-      <script src="src/index.js"></script>
-      <audio src="music/rhapsody_in_blue.m4a" autoplay loop></audio>
+    
+    <audio controls src="music/rhapsody_in_blue.mp3" type="audio/mp3" id="rhapsody"></audio>
+    <audio controls src="music/an_american_in_paris.mp3" type="audio/mp3" id="european"></audio>
+    <audio controls src="music/moss_garden.mp3" type="audio/mp3" id="asian"></audio>
+    <audio controls src="music/scarborough_fair.mp3" type="audio/mp3" id="medieval"></audio>
+    <audio controls src="music/somewhere.mp3" type="audio/mp3" id="american"></audio>
+    <audio controls src="music/the_cascades.mp3" type="audio/mp3" id="greek"></audio>
+    
+    <script src="src/index.js"></script>
 </body>
 </html>
 

@@ -28,7 +28,7 @@ window.addEventListener('DOMContentLoaded', function(){
 
 
     window.addEventListener("click", function(e){
-        if (e.target.innerText === "Next" || e.target.innerText === "Previous"){
+        if (e.target.innerText === ">" || e.target.innerText === "<"){
             indexHandler(e)
         } else if (e.target.id === "artwork"){
             e.target.id = "modal"
@@ -38,10 +38,20 @@ window.addEventListener('DOMContentLoaded', function(){
         }
     })
 
+    document.addEventListener('mouseover', handleMouseover)
+
+    function handleMouseover(e){
+        if (e.target.id === "artwork"){
+            // call paintingOverlay()
+            
+            console.log('mousing over');
+        }
+    }
+
     function indexHandler(e){
-        if (e.target.innerText === "Next"){
+        if (e.target.innerText === ">"){
             paintingIndex++
-        } else if (e.target.innerText === "Previous"){
+        } else if (e.target.innerText === "<"){
             paintingIndex--
         }
         tour(tourLocation, paintingIndex)
@@ -150,17 +160,34 @@ window.addEventListener('DOMContentLoaded', function(){
 
    function renderPainting(painting, json){
         container.innerHTML = `
-        <img src="${painting.image_url}" id="artwork"></img>
+        <div class="img__wrap">
+            <div class="artwork_display">
+            <button class="previous-button"><</button>
+            <img src="${painting.image_url}" id="artwork"></img>
+            <button class="next-button">></button>
+            </div>
+        </div>`
+   }
+
+   function paintingOverlay(painting){
+    // this function gets called when the mouseover happens
+    // render an overlay div
+    // with the content about the painting
+    // we may need to fetch painting again? 
+    // figure out how to make the overlay
+    // maybe a modal?
+
+    div = `<div class="artwork-description">
         <p>${json.title}</p>
         <p>${painting.department.name}</p>
         <p>${json.artistDisplayName}</p>
-        <a target="_blank" href="${json.objectURL}">See More</a></br>
-        <button>Previous</button>
-        <button>Next</button>`
+        <a target="_blank" href="${json.objectURL}">See More</a>
+        </div>`
+
    }
 
    function resetContainer(){
-        container.innerHTML = `<h1 class="the-met">The MET</h1>
+        container.innerHTML = `<div class="start-screen"><h1 class="the-met">The MET</h1>
         <div class="w3-dropdown-hover">
          <button class="button is-light the-met-start">Start Tour</button>
          <div class="w3-dropdown-content w3-bar-block w3-card-4 dropdown" id="tour">
@@ -171,6 +198,7 @@ window.addEventListener('DOMContentLoaded', function(){
            <a class="w3-bar-item w3-button">Asian Art</a>
            <a class="w3-bar-item w3-button">Greek and Roman Art</a>
          </div>
+       </div>
        </div>`
    }
    

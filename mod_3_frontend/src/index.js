@@ -9,6 +9,7 @@ window.addEventListener('DOMContentLoaded', function(){
     const container = document.getElementById('container')
     const navbar = document.querySelector('nav')
     const navend = document.querySelector('.nav-right')
+    const learnMore = document.getElementById('learn-more')
 
     const metUrl = "https://collectionapi.metmuseum.org/public/collection/v1/objects"
     const artworksUrl = "http://localhost:3000/artworks"
@@ -17,8 +18,10 @@ window.addEventListener('DOMContentLoaded', function(){
     getPaintings()
     getDepartments()
 
+    console.log(learnMore)
+
     window.addEventListener("keydown", function(e){
-        if (container.firstElementChild.firstElementChild.children[1].id === "artwork"){
+        if (container.firstElementChild.firstElementChild.children[1].id !== undefined){
                 indexHandler(e)
             }
     })
@@ -176,7 +179,10 @@ window.addEventListener('DOMContentLoaded', function(){
             <img src="${painting.image_url}" id="artwork"></img>
             <button class="next-button">></button>
             </div>
+            </div>
         </div>`
+        learnMore.innerHTML = `<a href="${json.objectURL}" target="_blank">Learn More</button>
+        `
    }
 
    function paintingOverlay(painting){
@@ -191,13 +197,13 @@ window.addEventListener('DOMContentLoaded', function(){
         <p>${json.title}</p>
         <p>${painting.department.name}</p>
         <p>${json.artistDisplayName}</p>
-        <a target="_blank" href="${json.objectURL}">See More</a>
         </div>`
 
    }
 
    function resetContainer(){
        navend.innerText = ""
+       learnMore.innerHTML = ""
         container.innerHTML = `<div class="start-screen"><h1 class="the-met">The MET</h1>
         <div class="w3-dropdown-hover">
          <button class="button is-light the-met-start">Start Tour</button>

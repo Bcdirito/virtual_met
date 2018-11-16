@@ -5,7 +5,7 @@ body {
   height: 100vh;
   background-size: 100% auto;
   background-repeat: no-repeat;
-    background-color: #000000;
+  background-color: #000000;
 }
 
 #artwork {
@@ -58,7 +58,7 @@ body {
 }
 
 .dropdown {
-  font-family: 'Abril Fatface', cursive;
+  /* font-family: 'Abril Fatface', cursive; */
   font-size: 10px;
 }
 
@@ -89,6 +89,18 @@ body {
 
 .start-tour {
   margin-left: 10%;
+}
+
+#play:hover {
+  color: black;
+}
+
+#pause:hover{
+  color: black;
+}
+
+.navbar-link:hover {
+  color: black;
 }
 
 
@@ -6879,7 +6891,7 @@ a.navbar-item:hover, a.navbar-item.is-active,
 .navbar-link:hover,
 .navbar-link.is-active {
   background-color: #fafafa;
-  color: #3273dc;
+  color: black;
 }
 
 .navbar-item {
@@ -6931,7 +6943,7 @@ a.navbar-item:hover, a.navbar-item.is-active,
 }
 
 .navbar-link:not(.is-arrowless)::after {
-  border-color: #3273dc;
+  border-color: black;
   margin-top: -0.375em;
   right: 1.125em;
 }

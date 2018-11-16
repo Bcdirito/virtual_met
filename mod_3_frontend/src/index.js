@@ -21,7 +21,7 @@ window.addEventListener('DOMContentLoaded', function(){
     getDepartments()
 
     window.addEventListener("keydown", function(e){
-        if (container.firstElementChild.firstElementChild.children[1].id !== undefined){
+        if (container.lastElementChild.lastElementChild.innerText !== "Start Tour"){
                 indexHandler(e)
             }
     })

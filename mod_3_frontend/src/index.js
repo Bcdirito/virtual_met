@@ -17,6 +17,12 @@ window.addEventListener('DOMContentLoaded', function(){
     getPaintings()
     getDepartments()
 
+    window.addEventListener("keydown", function(e){
+        if (container.firstElementChild.firstElementChild.children[1].id === "artwork"){
+                indexHandler(e)
+            }
+    })
+
     navbar.addEventListener("click", function(e){
         navbarHandler(e)
     })
@@ -50,11 +56,12 @@ window.addEventListener('DOMContentLoaded', function(){
     }
 
     function indexHandler(e){
-        if (e.target.innerText === ">"){
+        if (e.target.innerText === ">" || e.key === "ArrowRight"){
             paintingIndex++
-        } else if (e.target.innerText === "<"){
+        } else if (e.target.innerText === "<" || e.key ==="ArrowLeft"){
             paintingIndex--
         }
+        // console.log(paintingIndex)
         tour(tourLocation, paintingIndex)
     }
 
@@ -154,7 +161,8 @@ window.addEventListener('DOMContentLoaded', function(){
         paintingIndex = 0
         return paintingIndex
     } else if (index < 0){
-        return (tourPaintings.length - 1)
+        paintingIndex = (tourPaintings.length - 1)
+        return paintingIndex
     } else {
         return index
     }

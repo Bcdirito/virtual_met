@@ -4,12 +4,14 @@ window.addEventListener('DOMContentLoaded', function(){
     
     let paintingIndex = 0;
     let tourLocation;
-    let audio;
+    let music;
 
     const container = document.getElementById('container')
     const navbar = document.querySelector('nav')
     const navend = document.querySelector('.nav-right')
     const learnMore = document.getElementById('learn-more')
+    const pause = document.getElementById('pause')
+    const play = document.getElementById('play')
 
     const metUrl = "https://collectionapi.metmuseum.org/public/collection/v1/objects"
     const artworksUrl = "http://localhost:3000/artworks"
@@ -17,8 +19,6 @@ window.addEventListener('DOMContentLoaded', function(){
 
     getPaintings()
     getDepartments()
-
-    console.log(learnMore)
 
     window.addEventListener("keydown", function(e){
         if (container.firstElementChild.firstElementChild.children[1].id !== undefined){
@@ -70,29 +70,50 @@ window.addEventListener('DOMContentLoaded', function(){
 
     function navbarHandler(e){
         if (e.target.parentElement.id === "nav-dropdown"){
-            getTourInfo(e, audio)
+            getTourInfo(e, music)
         } else if (e.target.id === "met-logo") {
             resetContainer()
         } else if (e.target.id === "play"){
-            playMusic()
+            playMusic(music)
         } else if (e.target.id === "pause"){
-            pauseMusic(audio)
+            pauseMusic(music)
         }
+        else if (e.target.innerText === "Learn More"){
+            if (audio !== undefined){
+                pauseMusic(audio)
+            }
     }
+}
 
     function playMusic(){
+        if (typeof(audio) !== "undefined" && audio !== ""){
+            audio.pause()
+        }
+
         audio = getAudio()
         audio.currentTime = 0
         audio.play()
+        play.innerText = "Restart"
+        pause.innerText = "Pause"
     }
 
-    function pauseMusic(audio){
-        if (audio !== undefined){
-            audio.pause()
+    function pauseMusic(){
+        if (typeof(audio) !== "undefined" && audio !== ""){
+            if (pause.innerText === "Pause"){
+                audio.pause()
+                pause.innerText = "Unpause"
+                play.innerText = "Restart"
+            } else if (pause.innerText === "Unpause"){
+                audio.play()
+                pause.innerText = "Pause"
+            }
         }
     }
 
-    function getAudio(){
+    function getAudio(music){
+        if (music !== undefined){
+           pauseMusic(music)
+        }
         if (navend.innerText === "" || navend.innerText === "Modern and Contemporary Art"){
             return document.getElementById('rhapsody')
         } if (navend.innerText === "European Paintings"){
@@ -108,8 +129,17 @@ window.addEventListener('DOMContentLoaded', function(){
         }
     }
 
-    function getTourInfo(e, audio){
-        pauseMusic(audio)
+    function clearAudio(){
+        audio = ""
+    }
+
+    function getTourInfo(e){
+        if (typeof(audio) !== "undefined"){
+            audio.pause()
+        }
+        clearAudio()
+        play.innerText = "Play"
+        pause.innerText = "Pause"
         paintingIndex = 0
         name = e.target.innerText
         tourLocation = departmentsArray.find(object => {
@@ -202,6 +232,8 @@ window.addEventListener('DOMContentLoaded', function(){
    }
 
    function resetContainer(){
+       pause.innerText = "Pause"
+       play.innerText = "Play"
        navend.innerText = ""
        learnMore.innerHTML = ""
         container.innerHTML = `<div class="start-screen"><h1 class="the-met">The MET</h1>

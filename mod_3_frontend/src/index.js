@@ -30,7 +30,7 @@ window.addEventListener('DOMContentLoaded', function(){
         navbarHandler(e)
     })
 
-    container.addEventListener("click", function(e){
+    container.addEventListener("click", function(e, audio){
         if(e.target.parentElement.id === "tour"){
             getTourInfo(e, audio)
         } 
@@ -48,15 +48,15 @@ window.addEventListener('DOMContentLoaded', function(){
         }
     })
 
-    document.addEventListener('mouseover', handleMouseover)
+    // document.addEventListener('mouseover', handleMouseover)
 
-    function handleMouseover(e){
-        if (e.target.id === "artwork"){
-            // call paintingOverlay()
+    // function handleMouseover(e){
+    //     if (e.target.id === "artwork"){
+    //         call paintingOverlay()
             
-            console.log('mousing over');
-        }
-    }
+    //         console.log('mousing over');
+    //     }
+    // }
 
     function indexHandler(e){
         if (e.target.innerText === ">" || e.key === "ArrowRight"){
@@ -134,7 +134,7 @@ window.addEventListener('DOMContentLoaded', function(){
     }
 
     function getTourInfo(e){
-        if (typeof(audio) !== "undefined"){
+        if (typeof(audio) !== "undefined" && audio.duration > 0){
             audio.pause()
         }
         clearAudio()

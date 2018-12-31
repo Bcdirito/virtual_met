@@ -1,2 +1,0 @@
-class Department < ApplicationRecord
-end

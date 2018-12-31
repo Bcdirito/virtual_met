@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  primary_image: MyString
+  name: MyString
+  display_bio: MyString
+  ishighlight: false
+  department: one
+
+two:
+  title: MyString
+  primary_image: MyString
+  name: MyString
+  display_bio: MyString
+  ishighlight: false
+  department: two

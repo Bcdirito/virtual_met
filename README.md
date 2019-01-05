@@ -1,6 +1,6 @@
 # Virtual Met
 
-created by [Chris Webber](https://github.com/christopherweber) and [Brian DiRito](https://github.com/bcdirito)
+created by [Chris Weber](https://github.com/christopherweber) and [Brian DiRito](https://github.com/bcdirito)
 
 Virtual Met is a single-page Vanilla JavaScript application with a Ruby on Rails backend
 

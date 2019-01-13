@@ -2,6 +2,8 @@
 
 created by [Chris Weber](https://github.com/christopherweber) and [Brian DiRito](https://github.com/bcdirito)
 
+click [here](https://drive.google.com/drive/u/0/folders/11P75iFRrVg1udhHzxxzv5oTTBmKFKla6) for video demo
+
 Virtual Met is a single-page Vanilla JavaScript application with a Ruby on Rails backend
 
 Take procured tours of the Met 5th Ave Museum with the Virtual Met. With accompanying music, access to the Met's database, and already predetermined works, you can browse through up to six departments!
